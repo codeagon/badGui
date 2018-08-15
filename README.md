@@ -1,6 +1,8 @@
 # badGui
 A very bad module that you should fix
 
+[![Discord](https://discordapp.com/api/guilds/385946679733518338/widget.png)](https://discord.gg/dzB7xZK)
+
 ![wpw](https://i.imgur.com/YnHP87W.png)
 ****
 [pls giv monei](https://ko-fi.com/codeagon)
