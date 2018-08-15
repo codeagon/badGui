@@ -1,0 +1,11 @@
+{
+	"files": {
+		"index.js": "d053c382e2be475eb2cf987b0a5b42868a6d9c89d36cb3edd143e701c6f07112",
+		"module.json": "aeb717e8ff260b84e7d68839e1699d680c0b531ceb35b09e1e57d1782179d3f8"
+	},
+	"defs": {
+		"C_ADMIN": 1,
+		"C_CONFIRM_UPDATE_NOTIFICATION": 1,
+		"S_ANNOUNCE_UPDATE_NOTIFICATION": 1
+	}
+}
