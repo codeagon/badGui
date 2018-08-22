@@ -33,3 +33,5 @@ module.exports = function (mod) {
     };
 }
 ```
+## Additional stuff I added
+- Multiple commands can now be split/chained together by using `command: "cmd1;cmd2"`
