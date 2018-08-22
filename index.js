@@ -1,5 +1,5 @@
 const map = new WeakMap();
-
+let blep
 
 class badGui {
     constructor(dispatch) {
@@ -15,26 +15,30 @@ class badGui {
             })
 
             dispatch.hook('C_ADMIN', 1, (event) => {
-                dispatch.command.exec(event.command)
+                blep = event.command.split(";")
+                blep.forEach(
+                    function (cmd) {
+                        dispatch.command.exec(cmd);
+                    })
                 return false
             })
         }
     }
 
-    parse(array, title, mode) { //This should probably be named something not this
+    parse(array, title, mode) { // rename dis to sumthin not dum
         if (mode == 2) {
             this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
                 id: 0,
-                title: title, 
+                title: title, // <img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>` USE THIS
                 body: squonk(array, mode)
 
             })
             meme = ''
-            txtArray = ['cools'] //to pad the array idk what I was thinking
+            txtArray = ['cools']
         } else
             this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
                 id: 0,
-                title: title, 
+                title: title, // <img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>` USE THIS
                 body: thonk(array, mode)
             })
         meme = ''
@@ -44,7 +48,7 @@ class badGui {
 let meme = ''
 let count = 0,
     imgCount = 1,
-    textCount = 0, //for future things that I never did
+    textCount = 0,
     firstText = true,
     txtArray = [],
     isFinished = 0
@@ -69,6 +73,7 @@ function shoveData(stuff, mode) {
     } else {
         meme += stuff
     }
+    //default mode do nuffin
 }
 
 
@@ -90,6 +95,7 @@ function thonk(array) {
                     shoveData(`<a href='admincommand:/@${array[i].command}'>${array[i].text}</a>`)
                 }
     }
+    //console.log(`Finished stuff ${meme}`) //dispatch here
     count = 0
     return meme
 }
@@ -100,12 +106,15 @@ function squonk(array) { // should probably just delete this entire thing
             imgCount++
             txtArray.push(array[i].text)
             meme += `<a href='admincommand:/@${array[i].command}'><img src='img://__${array[i].img}'></img></a> &#09; `
+            //console.log(imgCount)
         } if (txtArray.length == 5) {
             console.log('else')
             firstText = true
             for (var j = 0; j < txtArray.length; j++) {
                 console.log(txtArray[j])
+                // console.log(txtArray)
                 if (j == 4) {
+                    // console.log('BEEEEEEEEEEEEEEP')
                     meme += `${txtArray[j]}<br>`
                     imgCount = 0
                     txtArray = []
@@ -120,6 +129,7 @@ function squonk(array) { // should probably just delete this entire thing
             }
             imgCount = 0
             txtArray = []
+            //console.log(txtArray.length)
             firstText = true
         }
     }
