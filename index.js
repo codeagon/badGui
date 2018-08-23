@@ -53,18 +53,10 @@ let count = 0,
     txtArray = [],
     isFinished = 0
 
-function search(nameKey, myArray) {
-    for (var i = 0; i < myArray.length; i++) {
-        if (myArray[i].command === nameKey) {
-            return myArray[i];
-        }
-    }
-}
-
-
 function shoveData(stuff, mode) {
     if (meme.length >= 16000) {
-        console.log(`WARNING: Data length exceeded, cannot add any additional text to window`)
+        meme += `GUI Data Limit Exceeded, some values may be missing`
+        isFinished = true
         return
     }
     if (count >= 7 && mode == 1) {
@@ -78,20 +70,20 @@ function shoveData(stuff, mode) {
 
 
 function thonk(array) {
-    let isFinished = 0
+    isFinished = false
     for (var i = 0; i < array.length; i++) {
         count++
-        if (array[i].command == null) {
+        if (array[i].command == null && !isFinished) {
             if (array[i].img != null) {
                 shoveData(`<img src='img://__${array[i].img}'></img>${array[i].text}`)
             }
             shoveData(`${array[i].text}`)
 
         } else
-            if (array[i].img != null && array[i].command !== null) {
+            if (array[i].img != null && array[i].command !== null && !isFinished) {
                 shoveData(`<a href='admincommand:/@${array[i].command}' ><img src='img://__${array[i].img}'></img></a>${array[i].text} `)
             } else
-                if (array[i].img == null && array[i].command !== null) {
+                if (array[i].img == null && array[i].command !== null && !isFinished) {
                     shoveData(`<a href='admincommand:/@${array[i].command}'>${array[i].text}</a>`)
                 }
     }
