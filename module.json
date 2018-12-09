@@ -1,5 +1,11 @@
 {
-	"servers": ["https://raw.githubusercontent.com/codeagon/badGui/master/"],
+	"servers": [
+		"https://raw.githubusercontent.com/codeagon/badGui/master/"
+	],
 	"supportUrl": "https://discord.gg/uhDAXWQ",
-	"disableAutoUpdate": false
+	"disableAutoUpdate": false,
+	"name": "badgui",
+	"author": "Pentagon",
+	"description": "Simple ingame UI generator",
+	"donationUrl": "https://ko-fi.com/codeagon"
 }

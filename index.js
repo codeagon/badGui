@@ -29,7 +29,7 @@ class badGui {
         if (mode == 2) {
             this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
                 id: 0,
-                title: title, // <img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>` USE THIS
+                title: title,
                 body: squonk(array, mode)
 
             })
@@ -38,7 +38,7 @@ class badGui {
         } else
             this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
                 id: 0,
-                title: title, // <img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>`<img src='icon_notice'/>` USE THIS
+                title: title,
                 body: thonk(array, mode)
             })
         meme = ''
@@ -125,7 +125,6 @@ function squonk(array) { // should probably just delete this entire thing
             firstText = true
         }
     }
-    console.log(meme)
     return meme
 }
 module.exports = badGui;
