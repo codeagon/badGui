@@ -10,8 +10,5 @@
 	"options": {
 		"niceName": "badGUI"
 	},
-	"donationUrl": "https://ko-fi.com/codeagon",
-	"dependencies": {
-		"badGUILoader": "https://github.com/codeagon/badGUILoader"
-	}
+	"donationUrl": "https://ko-fi.com/codeagon"
 }
