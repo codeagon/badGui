@@ -12,6 +12,6 @@
 	},
 	"donationUrl": "https://ko-fi.com/codeagon",
 		"dependencies": {
-		"badGUI": "https://raw.githubusercontent.com/codeagon/badGUI/master/module.json"
+		"badGUILoader": "https://raw.githubusercontent.com/codeagon/badGUILoader/master/module.json"
 	}
 }
