@@ -7,7 +7,15 @@ Bad GUI 2 - Badder GUI - the update instead of the mod
 
 ---
 
-[[toc]]
+- [BadGUI2](#bad-gu-i2)
+- [Usage](#usage)
+  - [For users](#for-users)
+  - [For developers](#for-developers)
+    - [Syntax / Additions](#syntax-additions)
+    - [Examples](#examples)
+    - [Interesting functions for you and your friends](#interesting-functions-for-you-and-your-friends)
+  - [Future plans](#future-plans)
+
 
 ---
 This was going to be a new mod but instead it's an update because I didn't want to break things and am also lazy.
