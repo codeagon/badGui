@@ -11,10 +11,11 @@ Bad GUI 2 - Badder GUI - the update instead of the mod
 - [Usage](#usage)
   - [For users](#for-users)
   - [For developers](#for-developers)
-    - [Syntax / Additions](#syntax-additions)
+    - [Syntax](#syntax)
     - [Examples](#examples)
     - [Interesting functions for you and your friends](#interesting-functions-for-you-and-your-friends)
   - [Future plans](#future-plans)
+
 
 
 ---
@@ -33,14 +34,16 @@ A cut down version of what you're looking for is anything that's for example lik
 
 As BadderGUI uses UpdateNotification for its payloads, anything written there previously will be overwritten/vanish upon next payload.
 
-### Syntax / Additions
+### Syntax
 BadderGUI2 comes with a few differences to badGUI. 
-Arg| Description
+
+Arg | Description
 ---|---
 gpk | Executes an internal command, multiple commands can be sent by separating them with `|`. When no text is given, commands execute right away and no window is shown.
-text| Works like the previous version but the GPK now contains a replacer for {@}{/@} that will now create a clickable link that executes a GUI command. You'll need to include a `'>` after the command for text since I'm lazy and don't want to touch AS2 again.
-command| Creates a clickable link that will execute a proxy command
-img| Places an image. Will be clickable if gpk or command are present
+text | Works like the previous version but the GPK now contains a replacer for {@}{/@} that will now create a clickable link that executes a GUI command. You'll need to include a `'>` after the command for text since I'm lazy and don't want to touch AS2 again.
+command | Creates a clickable link that will execute a proxy command
+img | Places an image. Will be clickable if gpk or command are present
+
 For titles of the window, they go after the "data" array. For example, ```gui.parse([text: `Hi this is some text`], `hi this is a title for some text)` ```
 
 ### Examples
