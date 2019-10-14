@@ -40,7 +40,7 @@ BadderGUI2 comes with a few differences to badGUI.
 Arg | Description
 ---|---
 gpk | Executes an internal command, multiple commands can be sent by separating them with `|`. When no text is given, commands execute right away and no window is shown.
-text | Works like the previous version but the GPK now contains a replacer for {@}{/@} that will now create a clickable link that executes a GUI command. You'll need to include a `'>` after the command for text since I'm lazy and don't want to touch AS2 again.
+text | Works like the previous version. You can write your own HTML in here too if you want.
 command | Creates a clickable link that will execute a proxy command
 img | Places an image. Will be clickable if gpk or command are present
 
