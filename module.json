@@ -12,6 +12,6 @@
 	},
 	"donationUrl": "https://ko-fi.com/codeagon",
 	"dependencies": {
-		"CaaliStateTracker": "https://github.com/codeagon/badGUILoader"
+		"badGUILoader": "https://github.com/codeagon/badGUILoader"
 	}
 }
