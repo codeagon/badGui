@@ -47,7 +47,7 @@ img | Places an image. Will be clickable if gpk or command are present
 For titles of the window, they go after the "data" array. For example, ```gui.parse([text: `Hi this is some text`], `hi this is a title for some text)` ```
 
 ### Examples
-An example mod is the [new and updated GUICI.](https://github.com/codeagon/GUI-Controller), however it's only been updated to use the direct GPK command rather than QoL commands.
+An example mod is the [new and updated GUICI.](https://github.com/codeagon/GUI-Controller) which makes use of several new features.
 
 Additionally heres a few example cases for syntax
 - **Pipes/Chaining**: 
@@ -68,8 +68,8 @@ Additionally heres a few example cases for syntax
   - Works just like before, for a good(bad) example see [FPS-Utils](https://github.com/codeagon/fps-utils)
   - Does not stack with GPK commands obviously 
 ### Interesting functions for you and your friends
-This is just a list of some things I've stumbled on that devs could use to make interesting mods.
+Will add a wiki for this rather than cluttering the readme even more.
 
 ## Future plans
-- Ideally a way to access more elements of the UI. I'm still not sure how the heck the new UI elements work or why they have no unique listeners.
-- Maybe some more QoL code for easily making UI elements
+- Ideally a way to access more elements of the UI. I'm still not sure how the heck the new UI elements work or why some seem have no unique listeners.
+- Maybe some more QoL code for easily making UI elements like easier text colouring with `{R}red text{/R}` similar to the existing formatting options.
