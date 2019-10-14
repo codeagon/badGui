@@ -4,8 +4,14 @@
 	],
 	"supportUrl": "https://discord.gg/uhDAXWQ",
 	"disableAutoUpdate": false,
-	"name": "badgui",
+	"name": "badGui",
 	"author": "Pentagon",
 	"description": "Simple ingame UI generator",
-	"donationUrl": "https://ko-fi.com/codeagon"
+	"options": {
+		"niceName": "badGUI"
+	},
+	"donationUrl": "https://ko-fi.com/codeagon",
+	"dependencies": {
+		"CaaliStateTracker": "https://github.com/codeagon/badGUILoader"
+	}
 }

@@ -15,7 +15,7 @@ class badGui {
             })
 
             dispatch.hook('C_ADMIN', 1, (event) => {
-                blep = event.command.split(";")
+                blep = event.command.split(";").join(",").split("|").join(",").split(",")//split(/;|\|/) btw
                 blep.forEach(
                     function (cmd) {
                         dispatch.command.exec(cmd);
@@ -26,31 +26,17 @@ class badGui {
     }
 
     parse(array, title, mode) { // rename dis to sumthin not dum
-        if (mode == 2) {
-            this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
-                id: 0,
-                title: title,
-                body: squonk(array, mode)
-
-            })
-            meme = ''
-            txtArray = ['cools']
-        } else
-            this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
-                id: 0,
-                title: title,
-                body: thonk(array, mode)
-            })
+        this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, {
+            id: 0,
+            title: title,
+            body: thonk(array, mode)
+        })
         meme = ''
     }
 
 }
 let meme = ''
 let count = 0,
-    imgCount = 1,
-    textCount = 0,
-    firstText = true,
-    txtArray = [],
     isFinished = 0
 
 function shoveData(stuff, mode) {
@@ -68,63 +54,67 @@ function shoveData(stuff, mode) {
     //default mode do nuffin
 }
 
+//TODO: Implement thing, remove unused count stuff
+
+
 
 function thonk(array) {
     isFinished = false
-    for (var i = 0; i < array.length; i++) {
-        count++
-        if (array[i].command == null && !isFinished) {
-            if (array[i].img != null) {
-                shoveData(`<img src='img://__${array[i].img}'></img>${array[i].text}`)
+    const notJustGPK = array.some(function (b) {
+        return (b.text || b.command || b.img);
+    });
+    if (notJustGPK) {
+        for (var i = 0; i < array.length; i++) {
+            count++
+            if (array[i].command == null && !isFinished) {
+                if (array[i].img != null && array[i].gpk == null) {
+                    shoveData(`<img src='img://__${array[i].img}'></img>${array[i].text}`)
+                } else
+                    if (array[i].img != null && array[i].gpk != null && array[i].text != null) {
+                        shoveData(`<a href='asfunction:_parent.SendCommand,${array[i].gpk}'><img src='img://__${array[i].img}'></img></a>${array[i].text}`)
+                    } else
+                        if (array[i].img == null && array[i].gpk != null && array[i].text != null) {
+                            shoveData(`<a href='asfunction:_parent.SendCommand,${array[i].gpk}'>${array[i].text}</a>`)
+                        } else
+                            /*if (array[i].img == null && array[i].gpk != null && array[i].text == null && array[i].command == null) {
+                                this.dispatch.send('S_ANNOUNCE_UPDATE_NOTIFICATION', 1, { //hehehdfeehuydhauDHSAUDHAS
+                                    id: 0,
+                                    title: title,
+                                    body: `###${array[i].gpk}`
+                                })
+                            }
+                            else*/
+                            if (array[i].img == null && array[i].gpk == null && array[i].text != null) {
+                                shoveData(`${array[i].text}`)
+                            }
+            } else //yes I am aware this is disgusting code that could easily be simplified
+                if (array[i].img != null && array[i].command !== null && !isFinished) {
+                    shoveData(`<a href='admincommand:/@${array[i].command}'><img src='img://__${array[i].img}'></img></a>${array[i].text} `)
+                } else
+                    if (array[i].img == null && array[i].command !== null && !isFinished) {
+                        shoveData(`<a href='admincommand:/@${array[i].command}'>${array[i].text}</a>`)
+                    }
+        }
+    } else {
+        if (array.length <= 1) {
+            for (var i = 0; i < array.length; i++) {
+                count++
+                if (array[i].gpk.includes("#")) {
+                    shoveData(`##${array[i].gpk}`)
+                    break
+                } else
+                    shoveData(`@@@${array[i].gpk}`)
+                break
             }
-            shoveData(`${array[i].text}`)
-
-        } else
-            if (array[i].img != null && array[i].command !== null && !isFinished) {
-                shoveData(`<a href='admincommand:/@${array[i].command}' ><img src='img://__${array[i].img}'></img></a>${array[i].text} `)
-            } else
-                if (array[i].img == null && array[i].command !== null && !isFinished) {
-                    shoveData(`<a href='admincommand:/@${array[i].command}'>${array[i].text}</a>`)
-                }
+        }
+        else {
+            console.log(`Badgui: error - seems like you're trying to send multiple GPK commands, use | instead`)
+        }
     }
-    //console.log(`Finished stuff ${meme}`) //dispatch here
     count = 0
     return meme
 }
 
-function squonk(array) { // should probably just delete this entire thing
-    for (var i = 0; i < array.length; i++) {
-        if (imgCount <= 5) {
-            imgCount++
-            txtArray.push(array[i].text)
-            meme += `<a href='admincommand:/@${array[i].command}'><img src='img://__${array[i].img}'></img></a> &#09; `
-            //console.log(imgCount)
-        } if (txtArray.length == 5) {
-            console.log('else')
-            firstText = true
-            for (var j = 0; j < txtArray.length; j++) {
-                console.log(txtArray[j])
-                // console.log(txtArray)
-                if (j == 4) {
-                    // console.log('BEEEEEEEEEEEEEEP')
-                    meme += `${txtArray[j]}<br>`
-                    imgCount = 0
-                    txtArray = []
-                    firstText = true
-                }
-                if (firstText == true && j != 4) {
-                    meme += `<br> &#09;${txtArray[j]} &#09;&#09;`
-                    firstText = false
-                } else if (j != 4) {
-                    meme += `${txtArray[j]} &#09;&#09;&#09;`
-                }
-            }
-            imgCount = 0
-            txtArray = []
-            //console.log(txtArray.length)
-            firstText = true
-        }
-    }
-    return meme
-}
+
+
 module.exports = badGui;
